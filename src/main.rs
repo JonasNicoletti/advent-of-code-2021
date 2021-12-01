@@ -1,6 +1,4 @@
-use std::collections::HashMap;
 mod day1;
-mod day2;
 
 fn main() {
   use clap::{load_yaml, App};
@@ -8,20 +6,18 @@ fn main() {
   let yaml = load_yaml!("cli.yml");
   let matches = App::from_yaml(yaml).get_matches();
 
-  let day = matches.value_of("day").unwrap_or("all");
-  let mut days: HashMap<&str, fn() -> ()> =
-    HashMap::from([("1", day1::main), ("2", day2::main)]);
+  let day: i32 = matches
+    .value_of("day")
+    .unwrap_or("0")
+    .parse()
+    .expect("Failed to parse day number");
 
-  if day == "all" {
-    for (day, day_fn) in days {
-      println!("Running day {}", day);
-      day_fn();
+  // match day to a number
+  match day {
+    1 => day1::main(),
+    0 => {
+      day1::main();
     }
-  } else {
-    println!("Running day {}", day);
-    days.get(day).unwrap_or(unknown_day)();
+    _ => println!("Invalid day"),
   }
-}
-fn unknown_day() {
-  println!("Unknown day");
 }
