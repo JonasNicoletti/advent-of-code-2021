@@ -1,0 +1,10 @@
+name: advent of code 2021
+version: "1.0"
+author: Jonas Nicoletti <sjnao89@gmail.com>
+about: Rust Advent of Code 2021
+args:
+  - day:
+      short: d
+      long: day
+      help: Day to be executed
+      takes_value: true
