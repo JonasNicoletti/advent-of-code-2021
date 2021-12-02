@@ -1,4 +1,5 @@
 mod day1;
+mod day2;
 
 fn main() {
   use clap::{load_yaml, App};
@@ -14,9 +15,11 @@ fn main() {
 
   // match day to a number
   match day {
-    1 => day1::main(),
+    1 => day1::solve(),
+    2 => day2::solve(),
     0 => {
-      day1::main();
+      day1::solve();
+      day2::solve();
     }
     _ => println!("Invalid day"),
   }

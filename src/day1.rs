@@ -1,7 +1,7 @@
 use std::fs;
 use std::vec::Vec;
 
-pub fn main() -> () {
+pub fn solve() -> () {
   part1();
   part2();
 }
